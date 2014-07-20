@@ -1,0 +1,5 @@
+birke_formtest:
+    resource: "@BirkeFormtestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
