@@ -1,9 +1,10 @@
 {% extends "::base.html.twig" %}
 
 {%block body %}
+<h1>Multiple validation group demo</h1>
 {{ form(form) }}
 
 <div>
-	Enter any combination of "Default", "one" or "two" in the Validation groups field (separated by comma) and submit the form. If "Default" is not the first entry, the validation errors show up on the wriong field.
+	Enter any combination of "Default", "one" or "two" in the validation groups field (separated by comma) and submit the form. In the current Symfony version (2.5.2), the validation errors show up on the wrong field (with the exception of "Default, one" and "Default, two").
 </div>
 {% endblock %}
