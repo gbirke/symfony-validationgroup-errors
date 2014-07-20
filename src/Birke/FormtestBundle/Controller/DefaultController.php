@@ -18,7 +18,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
     	$data = new TestData();
-    	$form = $this->createForm(new TestDataType(), $data);
+    	$form = $this->createForm(new TestDataType(), $data, array(
+ 		   'action' => $this->generateUrl('birke_formtest_default_index'),
+		   'method' => 'POST',
+		));
         return array('form' => $form->createView());
     }
 }

@@ -46,6 +46,13 @@ class TestData
      */
     private $groupTwoField;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vGroups", type="string", length=255)
+     */
+    private $vGroups = 'Default';
+
 
     /**
      * Get id
@@ -125,4 +132,29 @@ class TestData
     {
         return $this->groupTwoField;
     }
+
+
+    /**
+     * Set vGroups
+     *
+     * @param string $vGroups
+     * @return TestData
+     */
+    public function setVGroups($vGroups)
+    {
+        $this->vGroups = $vGroups;
+
+        return $this;
+    }
+
+    /**
+     * Get vGroups
+     *
+     * @return string 
+     */
+    public function getVGroups()
+    {
+        return $this->vGroups;
+    }
+
 }

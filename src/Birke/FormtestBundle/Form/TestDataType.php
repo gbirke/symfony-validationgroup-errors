@@ -18,6 +18,8 @@ class TestDataType extends AbstractType
             ->add('defaultField')
             ->add('groupOneField')
             ->add('groupTwoField')
+            ->add('vGroups')
+            ->add('submit', 'submit')
         ;
     }
     
