@@ -5,6 +5,12 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style>
+        #birke_formtestbundle_testdata div {
+            background:#ccc;
+            margin-bottom:1em;
+            }
+        </style>
     </head>
     <body>
         {% block body %}{% endblock %}

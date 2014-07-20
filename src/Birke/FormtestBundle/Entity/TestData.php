@@ -25,7 +25,7 @@ class TestData
     /**
      * @var string
      * 
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "The field in the default validation group should not be blank")
      * @ORM\Column(name="defaultField", type="string", length=255)
      */
     private $defaultField;
@@ -33,7 +33,7 @@ class TestData
     /**
      * @var string
      *
-     * @Assert\NotBlank(groups={"one"})
+     * @Assert\NotBlank(groups={"one"}, message = "The field in the validation group 'one' should not be blank")
      * @ORM\Column(name="groupOneField", type="string", length=255)
      */
     private $groupOneField;
@@ -41,7 +41,7 @@ class TestData
     /**
      * @var string
      *
-     * @Assert\NotBlank(groups={"one"})
+     * @Assert\NotBlank(groups={"two"}, message = "The field in the validation group 'two' should not be blank")
      * @ORM\Column(name="groupTwoField", type="string", length=255)
      */
     private $groupTwoField;

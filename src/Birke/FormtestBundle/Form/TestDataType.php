@@ -4,6 +4,7 @@ namespace Birke\FormtestBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TestDataType extends AbstractType
@@ -18,7 +19,7 @@ class TestDataType extends AbstractType
             ->add('defaultField')
             ->add('groupOneField')
             ->add('groupTwoField')
-            ->add('vGroups')
+            ->add('vGroups', 'text', array('label' => 'Validation groups'))
             ->add('submit', 'submit')
         ;
     }
@@ -29,8 +30,21 @@ class TestDataType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Birke\FormtestBundle\Entity\TestData'
+            'data_class' => 'Birke\FormtestBundle\Entity\TestData',
+            'validation_groups' => function(FormInterface $form) {
+                $allowedGroups = array("Default", "one", "two");
+                $data = $form->getData();
+                $vGroupsString = $data->getVGroups();
+                $vGroups = array_unique(preg_split("/\s*,\s*/", $vGroupsString));
+                $vGroups = array_intersect($vGroups, $allowedGroups);
+                if(!$vGroups) {
+                    $vGroups = array('Default');
+                }
+                return $vGroups;
+            },
         ));
+
+
     }
 
     /**
